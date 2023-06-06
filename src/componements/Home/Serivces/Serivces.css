@@ -1,0 +1,24 @@
+.service__box {
+    border-radius: 10px;
+    width: 100%;
+    background-color: #ecd8d8;
+    padding: 55px;
+    transition: .4s ease;
+ }
+
+ .service__box:hover {
+    transform: translateY(5px);
+    background-image: linear-gradient(90deg, #b68a88, #744a5a);
+ }
+
+ .service__box:hover .icon {
+    color: #fff;
+ }
+
+ .icon {
+    font-size: 54px;
+    font-weight: 400;
+    margin-bottom: 23px;
+    display: inline-flex;
+    color: #f9004d;
+ }
