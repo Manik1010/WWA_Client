@@ -29,7 +29,7 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {/* <Link to="/login" className="btn">SingIn</Link> */}
-                    <Link to="/registation" className="btn btn-active btn-ghost">SingUp</Link>
+                    <Link to="/login" className="btn btn-active btn-ghost">SingUp</Link>
                 </div>
             </div>
         </>
