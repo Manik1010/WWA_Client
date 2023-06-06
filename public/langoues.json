@@ -28,7 +28,7 @@
     },
     {
         "_id": "642c155b2c4774f05c36ee7a",
-        "name": "Roast Duck Breast",
+        "name": "John Smith",
         "disp": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-5-370x247.jpg",
         "instructor": "popular",
@@ -46,7 +46,7 @@
     },
     {
         "_id": "642c155b2c4774f05c36ee94",
-        "name": "Escalope de Veau",
+        "name": "Emma Johnson",
         "disp": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
         "instructor": "pizza",
@@ -73,7 +73,7 @@
     },
     {
         "_id": "642c155b2c4774f05c36eeaf",
-        "name": "Escalope de Veau",
+        "name": "Emma Johnson",
         "disp": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
         "instructor": "soup",
@@ -91,7 +91,7 @@
     },
     {
         "_id": "642c155b2c4774f05c36ee8a",
-        "name": "Escalope de Veau",
+        "name": "Emma Johnson",
         "disp": "Pan roasted haddock fillet wrapped in smoked French bacon with pea purée and tomato and chive vinaigrette",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-2-370x247.jpg",
         "instructor": "dessert",
@@ -118,7 +118,7 @@
     },
     {
         "_id": "642c155b2c4774f05c36ee84",
-        "name": "Roast Duck Breast",
+        "name": "John Smith",
         "disp": "Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce",
         "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-4-370x247.jpg",
         "instructor": "dessert",

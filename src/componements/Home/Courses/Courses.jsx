@@ -32,6 +32,7 @@ const Courses = () => {
                     ))
                 }
             </div>
+            <button className="btn btn-active btn-ghost p-2 mt-4">Booking Course</button>
         </div>
     );
 };

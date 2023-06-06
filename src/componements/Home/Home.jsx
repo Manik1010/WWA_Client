@@ -1,4 +1,5 @@
 import useTitle from "../../../hooks/useTitle";
+import Instructors from "./Instructors/Instructors";
 import About from "./About";
 import Banner from "./Banner";
 import Courses from "./Courses/Courses";
@@ -11,7 +12,7 @@ const Home = () => {
             <Banner></Banner>
             <About></About>
             <Courses></Courses>
-            Home......
+            <Instructors></Instructors>
             <Serivces></Serivces>
         </div>
     );

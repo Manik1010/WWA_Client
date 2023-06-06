@@ -1,0 +1,65 @@
+[
+    {
+        "_id": "1",
+        "name": "John Smith",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
+        "email": "john.smith@example.com",
+        "address": "123 Main Street, City, Country",
+        "description": "John Smith is an experienced language instructor with a passion for teaching. He specializes in conversational language skills and has helped numerous students achieve fluency in a short period of time.",
+        "studentNumber": 50
+      },
+      {
+        "_id": "2",
+        "name": "Emma Johnson",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
+        "email": "emma.johnson@example.com",
+        "address": "456 Elm Street, City, Country",
+        "description": "Emma Johnson is a certified language teacher with a focus on grammar and vocabulary. Her interactive teaching methods make learning fun and engaging for students of all levels.",
+        "studentNumber": 80
+      },
+      {
+        "_id": "3",
+        "name": "David Lee",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
+        "email": "david.lee@example.com",
+        "address": "789 Oak Street, City, Country",
+        "description": "David Lee is an expert in language proficiency exams. He has extensive experience in preparing students for language exams and helping them achieve high scores.",
+        "studentNumber": 30
+      },
+      {
+        "_id": "4",
+        "name": "Sarah Johnson",
+        "image": "https://cristianonew.ukrdevs.com/wp-content/uploads/2016/08/product-3-370x247.jpg",
+        "email": "sarah.johnson@example.com",
+        "address": "321 Pine Street, City, Country",
+        "description": "Sarah Johnson specializes in business language skills. Her practical approach and real-world examples help students develop the language skills necessary for professional settings.",
+        "studentNumber": 60
+      },
+      {
+        "_id": "5",
+        "name": "Michael Anderson",
+        "image": "michael_anderson.jpg",
+        "email": "michael.anderson@example.com",
+        "address": "654 Maple Street, City, Country",
+        "description": "Michael Anderson is a native speaker and language enthusiast. He focuses on cultural immersion and incorporates authentic materials to enhance students' language learning experience.",
+        "studentNumber": 45
+      },
+      {
+        "_id": "6",
+        "name": "Emily Wilson",
+        "image": "emily_wilson.jpg",
+        "email": "emily.wilson@example.com",
+        "address": "987 Cedar Street, City, Country",
+        "description": "Emily Wilson is a passionate language teacher with a background in literature. She encourages students to explore the beauty of language through literary works and creative writing.",
+        "studentNumber": 70
+      },
+      {
+        "_id": "7",
+        "name": "Daniel Brown",
+        "image": "daniel_brown.jpg",
+        "email": "daniel.brown@example.com",
+        "address": "741 Birch Street, City, Country",
+        "description": "Daniel Brown specializes in teaching language for travel purposes. He equips students with essential vocabulary, phrases, and cultural knowledge to confidently navigate foreign countries.",
+        "studentNumber": 55
+      }
+]
