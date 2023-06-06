@@ -3,11 +3,13 @@ import Home from "../componements/Home/Home";
 import Main from "../Layout/Main"
 import Deshboard from "../Layout/Deshboard";
 import AdminDeshboard from "../componements/Deshboard/AdminDeshboard/AdminDeshboard";
-import AddItem from "../componements/Deshboard/AddItem/AddItem";
-import ManageItem from "../componements/Deshboard/ManageItem/ManageItem";
+
 import Instructors from "../componements/Instructors/Instructors";
 import Classes from "../componements/Classes/Classes";
 import Login from "../componements/Users/Login";
+import AddItem from "../componements/Deshboard/AdminDeshboard/AddItem/AddItem";
+import ManageItem from "../componements/Deshboard/AdminDeshboard/ManageItem/ManageItem";
+import AllUsers from "../componements/Deshboard/AdminDeshboard/AllUsers/AllUsers";
 // import SignUp from "../componements/Users/SignUp";
 
 
@@ -57,7 +59,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'allusers',
-                element: <ManageItem></ManageItem>
+                element: <AllUsers></AllUsers>
             }
 
         ]
