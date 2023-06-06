@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import Instructor from "./Instructor";
+import { Link } from "react-router-dom";
 
 const Instructors = () => {
     const [instructors, setInstructors] = useState([]);
@@ -29,6 +30,7 @@ const Instructors = () => {
                     ))
                 }
             </div>
+            <Link to="/instructor" className="btn btn-active btn-ghost">View Diteles</Link>
         </div>
     );
 };

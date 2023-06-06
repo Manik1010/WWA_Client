@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import SectionTitle from "../../SectionTitle/SectionTitle";
 import Course from "./course";
+import { Link } from "react-router-dom";
 
 const Courses = () => {
     const [courses, setCourses] = useState([]);
@@ -32,7 +33,7 @@ const Courses = () => {
                     ))
                 }
             </div>
-            <button className="btn btn-active btn-ghost p-2 mt-4">Booking Course</button>
+            <Link to="/class" className="btn btn-active btn-ghost">Booking Course</Link>
         </div>
     );
 };
