@@ -1,20 +1,20 @@
-import { useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate } from 'react-simple-captcha';
-// import { AuthContext } from '../../providers/AuthProvider';
-import { Link } from 'react-router-dom';
-// import Swal from 'sweetalert2'
-// import SocialLogin from '../Shared/SocialLogin/SocialLogin';
+import { AuthContext } from '../../providers/AuthProvider';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2'
 import useTitle from '../../../hooks/useTitle';
 import img from '../../assets/home/01.jpeg'
+import SocialLogin from '../Share/SocialLogin/SocialLogin';
 
 const Login = () => {
     useTitle("Login")
-    // const [disabled, setDisabled] = useState(true);
-    // const { signIn } = useContext(AuthContext);
-    // const navigate = useNavigate();
-    // const location = useLocation();
+    const [disabled, setDisabled] = useState(true);
+    const { signIn } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    // const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -25,32 +25,32 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
-        // signIn(email, password)
-        //     .then(result => {
-        //         const user = result.user;
-        //         console.log(user);
-        //         Swal.fire({
-        //             title: 'User Login Successful.',
-        //             showClass: {
-        //                 popup: 'animate__animated animate__fadeInDown'
-        //             },
-        //             hideClass: {
-        //                 popup: 'animate__animated animate__fadeOutUp'
-        //             }
-        //         });
-        //         navigate(from, { replace: true });
-        //     })
+        // console.log(email, password);
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                Swal.fire({
+                    title: 'User Login Successful.',
+                    showClass: {
+                        popup: 'animate__animated animate__fadeInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__fadeOutUp'
+                    }
+                });
+                navigate(from, { replace: true });
+            })
     }
 
     const handleValidateCaptcha = (e) => {
         const user_captcha_value = e.target.value;
-        // if (validateCaptcha(user_captcha_value)) {
-        //     setDisabled(false);
-        // }
-        // else {
-        //     setDisabled(true)
-        // }
+        if (validateCaptcha(user_captcha_value)) {
+            setDisabled(false);
+        }
+        else {
+            setDisabled(true)
+        }
     }
 
     return (
@@ -87,11 +87,11 @@ const Login = () => {
                             </div>
                             {/* TODO: make button disabled for captcha */}
                             <div className="form-control mt-6">
-                                <input disabled={false} className="btn btn-primary" type="submit" value="Sing In" />
+                                <input disabled={false} className="btn btn-active btn-ghost" type="submit" value="Sing In" />
                             </div>
                         </form>
-                        <p className='my-3 text=center'>New Here? Create an account... <Link className='text-orange-500 font-bold' to="/registation">Sing Up</Link></p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <p className='mt-[-20px] text=center'>New Here? Create an account... <Link className='text-orange-500 font-bold' to="/registation">Sing Up</Link></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

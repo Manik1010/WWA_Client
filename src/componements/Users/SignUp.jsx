@@ -1,11 +1,11 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
-// import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 import useTitle from "../../../hooks/useTitle";
 import img from '../../assets/home/01.jpeg'
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import SocialLogin from "../Share/SocialLogin/SocialLogin";
 
 
 const SignUp = () => {
@@ -48,7 +48,7 @@ const SignUp = () => {
                                         showConfirmButton: false,
                                         timer: 1500
                                     });
-                                    navigate('/');
+                                    navigate('/login');
                                 }
                             })
 
@@ -109,12 +109,12 @@ const SignUp = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="Sign Up" />
+                            <div className="form-control mt-1">
+                                <input className="btn btn-active btn-ghost" type="submit" value="Sign Up" />
                             </div>
                         </form>
-                        <p><small>Already have an account <Link className='text-orange-500 font-bold' to="/login">Sing In</Link></small></p>
-                        {/* <SocialLogin></SocialLogin> */}
+                        <p className="text-center mt-[-20px]"><small>Already have an account.. <Link className='text-orange-500 font-bold' to="/login">Sing In</Link></small></p>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>
