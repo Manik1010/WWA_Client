@@ -15,10 +15,6 @@ const Classes = () => {
     // console.log(courses);
     return (
         <div>
-            {/* <SectionTitle
-                subHeading='Do you want to learn?'
-                heading='Find the course you like'
-            ></SectionTitle> */}
             <div>
                 <h1 className="text-3xl text-center font-bold p-24">All Course Are Here...</h1>
                 <div className="mt-[-100px]">

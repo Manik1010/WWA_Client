@@ -1,7 +1,7 @@
 
 const Class = ({ course }) => {
     const { name, price, set, instructor, image, _id, disp, available_set } = course
-    console.log(available_set, set)
+    // console.log(available_set, set)
     return (
         <div className="card card-side bg-base-100 shadow-xl m-4 p-8">
             <figure><img src={image} alt="Movie" /></figure>
