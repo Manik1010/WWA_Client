@@ -1,86 +1,65 @@
 import useTitle from "../../../../../hooks/useTitle";
+import { useQuery } from "@tanstack/react-query";
+import SectionTitle from "../../../SectionTitle/SectionTitle";
 
 const ManageItem = () => {
+
     useTitle("ManageItem");
+    const { data: courses = [], refetch } = useQuery(['users'], async () => {
+        const res = await fetch("http://localhost:5000/courses")
+        // return res.data;
+        return res.json();
+    })
     return (
         <div className="overflow-x-auto">
+            <SectionTitle
+                subHeading='AdminPanal'
+                heading='Admin want to manage!!!'
+            ></SectionTitle>
             <table className="table">
                 {/* head */}
                 <thead>
-                <tr>
+                    <tr className="text-center">
                         <th>#</th>
-                        <th>Item Image</th>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Category</th>
+                        <th>Course</th>
+                        <th>Instructor Name</th>
+                        <th>Total Sets</th>
+                        <th>Available Sets</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {/* row 1 */}
-                    <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
-                        </th>
-                        <td>
-                            <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+
+                    {
+                        courses.map((course, index) => <tr key={course._id}>
+                            <th>{index + 1}</th>
+                            <td>
+                                <div className="flex items-center space-x-3">
+                                    <div className="avatar">
+                                        <div className="mask mask-squircle w-12 h-12">
+                                            <img src={course.image} alt="Avatar Tailwind CSS Component" />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        {course.name}
                                     </div>
                                 </div>
-                                <div>
-                                    <div className="font-bold">Hart Hagerty</div>
-                                    <div className="text-sm opacity-50">United States</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Zemlak, Daniel and Leannon
-                            <br />
-                            <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                        </td>
-                        <td>Purple</td>
-                        <th>
-                            <button className="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
-                    {/* row 2 */}
-                    <tr>
-                        <th>
-                            <label>
-                                <input type="checkbox" className="checkbox" />
-                            </label>
-                        </th>
-                        <td>
-                            <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                    <div className="mask mask-squircle w-12 h-12">
-                                        <img src="/tailwind-css-component-profile-3@56w.png" alt="Avatar Tailwind CSS Component" />
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="font-bold">Brice Swyre</div>
-                                    <div className="text-sm opacity-50">China</div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            Carroll Group
-                            <br />
-                            <span className="badge badge-ghost badge-sm">Tax Accountant</span>
-                        </td>
-                        <td>Red</td>
-                        <th>
-                            <button className="btn btn-ghost btn-xs">details</button>
-                        </th>
-                    </tr>
-                    
+                            </td>
+                            <td>{course.instructor}</td>
+                            <td>{course.set}</td>
+                            <td>{course.available_set}</td>
+                            <td>
+                                <button className="btn btn-xs p-1">pending</button>
+                                <button className="btn btn-xs p-1">approv</button>
+                                <button className="btn btn-xs p-1">Denie</button>
+                            </td>
+
+                        </tr>)
+                    }
+
                 </tbody>
                 {/* foot */}
-               
+
 
             </table>
         </div>

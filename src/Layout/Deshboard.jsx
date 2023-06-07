@@ -31,7 +31,7 @@ const Deshboard = () => {
                             return (
                                 <>
                                     <li><NavLink to="/dashboard/adminDashboard"><FaHome></FaHome> Admin Home</NavLink></li>
-                                    <li><NavLink to="/dashboard/manageItem"><FaWallet></FaWallet> Manage Items</NavLink></li>
+                                    <li><NavLink to="/dashboard/manageItem"><FaWallet></FaWallet> Manage Couses</NavLink></li>
                                     <li><NavLink to="/dashboard/allusers"><FaUsers></FaUsers> All Users</NavLink></li>
                                 </>
                             );

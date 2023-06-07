@@ -54,7 +54,8 @@ const AllUsers = () => {
 
 
     const handleDelete = user => {
-
+        console.log(user)
+        console.log(user._id)
     }
 
     return (
