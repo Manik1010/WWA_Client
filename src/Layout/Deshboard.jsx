@@ -5,7 +5,7 @@ import { FaWallet, FaHome, FaUsers, FaUtensils } from "react-icons/fa";
 import logo from '../../public/logo.jpeg'
 const Deshboard = () => {
     // TODO... 
-    const userStatus = "Instructor";
+    const userStatus = "Admin";
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
