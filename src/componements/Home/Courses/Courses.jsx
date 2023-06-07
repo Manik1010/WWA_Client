@@ -7,7 +7,7 @@ const Courses = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch("langoues.json")
+        fetch("http://localhost:5000/courses")
             .then(res => res.json())
             .then(result => {
                 // console.log(result);
