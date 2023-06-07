@@ -10,7 +10,7 @@ import Login from "../componements/Users/Login";
 import AddItem from "../componements/Deshboard/AdminDeshboard/AddItem/AddItem";
 import ManageItem from "../componements/Deshboard/AdminDeshboard/ManageItem/ManageItem";
 import AllUsers from "../componements/Deshboard/AdminDeshboard/AllUsers/AllUsers";
-// import SignUp from "../componements/Users/SignUp";
+import SignUp from "../componements/Users/SignUp";
 
 
 export const router = createBrowserRouter([
@@ -34,10 +34,10 @@ export const router = createBrowserRouter([
                 path: 'login',
                 element: <Login></Login>
             },
-            // {
-            //     path: 'registation',
-            //     element: <SignUp></SignUp>
-            // }
+            {
+                path: 'registation',
+                element: <SignUp></SignUp>
+            }
         ]
     },
     {

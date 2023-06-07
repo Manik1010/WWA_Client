@@ -1,4 +1,4 @@
-import { useEffect} from 'react';
+import { useEffect } from 'react';
 import { loadCaptchaEnginge, LoadCanvasTemplate } from 'react-simple-captcha';
 // import { AuthContext } from '../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
@@ -61,6 +61,7 @@ const Login = () => {
                         <img src={img}></img>
                     </div>
                     <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+                    <h1 className="text-3xl font-bold text-center">Sign in now!</h1>
                         <form onSubmit={handleLogin} className="card-body">
                             <div className="form-control">
                                 <label className="label">
@@ -86,10 +87,10 @@ const Login = () => {
                             </div>
                             {/* TODO: make button disabled for captcha */}
                             <div className="form-control mt-6">
-                                <input disabled={false} className="btn btn-primary" type="submit" value="Login" />
+                                <input disabled={false} className="btn btn-primary" type="submit" value="Sing In" />
                             </div>
                         </form>
-                        <p className='my-3 text=center'>New Here? Create an account... <Link className='text-orange-500 font-bold' to="/singup">Sing Up</Link></p>
+                        <p className='my-3 text=center'>New Here? Create an account... <Link className='text-orange-500 font-bold' to="/registation">Sing Up</Link></p>
                         {/* <SocialLogin></SocialLogin> */}
                     </div>
                 </div>
