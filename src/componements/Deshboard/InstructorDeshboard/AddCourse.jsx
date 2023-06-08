@@ -3,52 +3,58 @@ import SectionTitle from "../../SectionTitle/SectionTitle";
 import useTitle from "../../../../hooks/useTitle";
 // import { useQuery } from "react-query";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-// const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
+import useAxiosSecure from "../../../../hooks/useAxiosSecure";
+const img_hosting_token = import.meta.env.VITE_Image_Upload_Token;
 
 const AddCourse = () => {
 
     useTitle("AddCourse");
-    const [isHidden, setIsHidden] = useState(true);
+    const {user } = useContext(AuthContext);
+    const [axiosSecure] = useAxiosSecure();
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset } = useForm();
+
+    const img_hosting_url = `https://api.imgbb.com/1/upload?expiration=600&key=${img_hosting_token}`
+
     const onSubmit = data => {
-        console.log(data)
+        // console.log(data)
         const formData = new FormData();
         formData.append('image', data.image[0])
 
-        // fetch(img_hosting_url, {
-        //     method: 'POST',
-        //     body: formData
-        // })
-        // .then(res => res.json())
-        // .then(imgResponse => {
-        //     if(imgResponse.success){
-        //         const imgURL = imgResponse.data.display_url;
-        //         // console.log(data, imgURL)
-        //         const {name, price, category, recipe} = data;
-        //         const newItem = {name, price: parseFloat(price), category, recipe, image:imgURL}
-        //         console.log(newItem)
-        //         fetch("http://localhost:5000/courses")
-        //         .then(data => {
-        //             console.log('after posting new menu item', data.data)
-        //             if(data.data.insertedId){
-        //                 reset;
-        //                 Swal.fire({
-        //                     position: 'top-end',
-        //                     icon: 'success',
-        //                     title: 'Course added successfully',
-        //                     showConfirmButton: false,
-        //                     timer: 1500
-        //                   })
-        //             }
-        //         })
-        //     }
-        // })
+        fetch(img_hosting_url, {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(imgResponse => {
+            if(imgResponse.success){
+                const imgURL = imgResponse.data.display_url;
+                // console.log(data, imgURL)
+                const {name, price, instructor, email, set, status, disp} = data;
+                const newItem = {name,instructor, email, set, price: parseFloat(price), status, disp, image:imgURL}
+                // console.log(newItem)
+                axiosSecure.post('/courses', newItem)
+                .then(data => {
+                    console.log('After posting new course item', data.data)
+                    if(data.data.insertedId){
+                        reset();
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Item added successfully',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
+            }
+        })
 
     };
+    // console.log(img_hosting_token)
     // console.log(errors);
-    // const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
 
     // const { data: courses = [], refetch } = useQuery(['courses'], async () => {
     //     const res = await fetch("http://localhost:5000/courses")
@@ -84,7 +90,7 @@ const AddCourse = () => {
                         <label className="label">
                             <span className="label-text">Instroctor Email*</span>
                         </label>
-                        <input type="text" placeholder="Instroctor Email"
+                        <input value={user.email}
                             {...register("email", { required: true, maxLength: 30 })}
                             className="input input-bordered w-full " />
                     </div>

@@ -1,11 +1,27 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { FaWallet, FaHome, FaUsers, FaUtensils } from "react-icons/fa";
-
-// import logo from '../../../public/logo.jpeg';
 import logo from '../../public/logo.jpeg'
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+
+
 const Deshboard = () => {
+
+    const {logOut } = useContext(AuthContext);
+    const navigate = useNavigate()
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { 
+                navigate('/login')
+            })
+            .catch(error => console.log(error));
+    }
+
     // TODO... 
     const userStatus = "Instructor";
+
+
     return (
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -58,7 +74,7 @@ const Deshboard = () => {
                     <div className="divider"></div>
                     <li><NavLink to="/"><FaHome></FaHome>Home</NavLink></li>
                     <li><NavLink to='/class'>Courses</NavLink></li>
-                    <li><NavLink to='/class'>LogOut</NavLink></li>
+                    <li><button onClick={handleLogOut} className="btn btn-ghost">LogOut</button></li>
                 </ul>
 
             </div>

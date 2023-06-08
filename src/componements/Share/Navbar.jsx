@@ -1,6 +1,19 @@
-import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+    console.log(user);
+
+    const navigate = useNavigate()
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => { navigate('/login') })
+            .catch(error => console.log(error));
+    }
+
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
         <li><Link to="/instructor">Instructor</Link></li>
@@ -29,7 +42,14 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {/* <Link to="/login" className="btn">SingIn</Link> */}
-                    <Link to="/registation" className="btn btn-active btn-ghost">SingUp</Link>
+                    
+                    {
+                        user ? <>
+                            <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+                        </> : <>
+                        <Link to="/login" className="btn btn-active btn-ghost">Sing In</Link>
+                        </>
+                    }
                 </div>
             </div>
         </>
