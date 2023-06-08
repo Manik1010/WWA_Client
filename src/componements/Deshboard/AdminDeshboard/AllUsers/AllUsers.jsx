@@ -19,7 +19,7 @@ const AllUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
@@ -38,7 +38,7 @@ const AllUsers = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
                 if (data.modifiedCount) {
                     refetch();
                     Swal.fire({
@@ -54,8 +54,19 @@ const AllUsers = () => {
 
 
     const handleDelete = user => {
-        console.log(user)
+        // console.log(user)
         console.log(user._id)
+        fetch(`http://localhost:5000/users/${user._id}`, {
+            method: "DELETE"
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                refetch
+                if (data.deletedCount > 0) {
+                    alert('Deleted Successfully!!!');
+                }
+            })
     }
 
     return (
