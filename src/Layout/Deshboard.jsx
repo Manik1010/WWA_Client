@@ -8,7 +8,7 @@ import { FaCartArrowDown } from "react-icons/fa";
 
 const Deshboard = () => {
 
-    const { logOut } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const handleLogOut = () => {
@@ -20,7 +20,8 @@ const Deshboard = () => {
     }
 
     // TODO... 
-    const userStatus = "Instructordd";
+    console.log(user);
+    const userStatus = "Admin";
 
 
     return (

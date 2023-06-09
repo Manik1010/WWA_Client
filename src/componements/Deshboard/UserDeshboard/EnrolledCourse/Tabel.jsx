@@ -9,7 +9,7 @@ const Tabel = ({bookingItem}) => {
             .then(res => res.json())
             .then(result => {
                 setData(result);
-                console.log(bookingItem)
+                // console.log(bookingItem)
             })
     }, [bookingItem])
     // console.log(data)

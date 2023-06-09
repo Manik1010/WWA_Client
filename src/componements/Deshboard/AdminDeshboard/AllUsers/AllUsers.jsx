@@ -1,6 +1,6 @@
 import useTitle from "../../../../../hooks/useTitle";
 import { useQuery } from "@tanstack/react-query";
-import { FaTrashAlt, FaUserShield, FaUserSlash } from "react-icons/fa";
+import { FaEdit, FaTrashAlt, FaUserShield, FaUserSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
@@ -54,19 +54,34 @@ const AllUsers = () => {
 
 
     const handleDelete = user => {
-        // console.log(user)
-        console.log(user._id)
-        fetch(`http://localhost:5000/users/${user._id}`, {
-            method: "DELETE"
+        // console.log(user._id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/users/${user._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                refetch
-                if (data.deletedCount > 0) {
-                    alert('Deleted Successfully!!!');
-                }
-            })
     }
 
     return (
@@ -98,7 +113,10 @@ const AllUsers = () => {
                                         <button onClick={() => handleMakeInstructor(user)} className="btn btn-ghost ml-2 bg-orange-300  text-white"><FaUserSlash></FaUserSlash></button>
                                     }
                                 </td>
-                                <td><button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button></td>
+                                <td>
+                                    <button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
+                                    <button onClick={() => handleEdit(user)} className="btn btn-ghost bg-red-400  text-white ml-2"><FaEdit></FaEdit></button>
+                                </td>
                             </tr>)
                         }
 

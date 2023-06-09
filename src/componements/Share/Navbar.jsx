@@ -9,7 +9,7 @@ const Navbar = () => {
     // console.log(user);
     const [bookings] = useBooking();
     const navigate = useNavigate()
-    console.log(bookings);
+    // console.log(bookings);
 
     const handleLogOut = () => {
         logOut()

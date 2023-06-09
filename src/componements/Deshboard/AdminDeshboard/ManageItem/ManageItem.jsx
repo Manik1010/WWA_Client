@@ -1,15 +1,67 @@
 import useTitle from "../../../../../hooks/useTitle";
 import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../../SectionTitle/SectionTitle";
+import Swal from "sweetalert2";
 
 const ManageItem = () => {
 
-    useTitle("ManageItem");
+    useTitle("ManageCourse");
     const { data: courses = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch("http://localhost:5000/courses")
         // return res.data;
         return res.json();
     })
+    const handleDelete = course => {
+        // console.log(course._id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`http://localhost:5000/courses/${course._id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+    }
+    const handleApprove = course => {
+        // console.log(course.status)
+        fetch(`http://localhost:5000/courses/admin/${course._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if (data.modifiedCount) {
+                    console.log(data)
+                    refetch();
+                    Swal.fire({
+                        position: 'top-start',
+                        icon: 'success',
+                        title: `${course.name} is an Approved Now!!!`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
+    }
     return (
         <div className="overflow-x-auto">
             <SectionTitle
@@ -24,7 +76,8 @@ const ManageItem = () => {
                         <th>Course</th>
                         <th>Instructor Name</th>
                         <th>Total Sets</th>
-                        <th>Available Sets</th>
+                        <th>Available</th>
+                        <th>Status</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -33,25 +86,21 @@ const ManageItem = () => {
                     {
                         courses.map((course, index) => <tr key={course._id}>
                             <th>{index + 1}</th>
-                            <td>
-                                <div className="flex items-center space-x-3">
-                                    <div className="avatar">
-                                        <div className="mask mask-squircle w-12 h-12">
-                                            <img src={course.image} alt="Avatar Tailwind CSS Component" />
-                                        </div>
-                                    </div>
-                                    <div>
-                                        {course.name}
-                                    </div>
-                                </div>
-                            </td>
+                            <td>{course.name}</td>
                             <td>{course.instructor}</td>
                             <td>{course.set}</td>
                             <td>{course.available_set}</td>
+                            <td>{course.status}</td>
                             <td>
-                                <button className="btn btn-xs p-1">pending</button>
-                                <button className="btn btn-xs p-1">approv</button>
-                                <button className="btn btn-xs p-1">Denie</button>
+                                {/* {course.status !== "Approved" ? (
+                                    <button onClick={() => handleApprove(course)} className="btn btn-xs btn-success">
+                                        Approve
+                                    </button>
+                                ) : null} */}
+                                <button onClick={() => handleApprove(course)} className="btn btn-xs btn-success">approv</button>
+                                <button className="btn btn-xs btn-info ml-1">Feedback</button>
+                                <button onClick={() => handleDelete(course)} className="btn btn-xs btn-warning ml-12">Denie</button>
+
                             </td>
 
                         </tr>)

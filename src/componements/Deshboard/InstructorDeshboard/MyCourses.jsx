@@ -1,6 +1,8 @@
+import { useContext, useEffect, useState } from "react";
 import useTitle from "../../../../hooks/useTitle";
 import SectionTitle from "../../SectionTitle/SectionTitle";
-import useCourese from "../../../../hooks/useCourese";
+import { AuthContext } from "../../../providers/AuthProvider";
+// import useCourese from "../../../../hooks/useCourese";
 
 const MyCourses = () => {
     useTitle("MyCoures");
@@ -9,25 +11,25 @@ const MyCourses = () => {
     //     // return res.data;
     //     return res.json();
     // })
-    // const {user } = useContext(AuthContext);
-    // const [courses, setCourses] = useState([]);
+    const {user } = useContext(AuthContext);
+    const [courses, setCourses] = useState([]);
 
-    // useEffect(() => {
-    //     fetch(`http://localhost:5000/courses/${user.email}`)
-    //         .then(res => res.json())
-    //         .then(result => {
-    //             setCourses(result);
-    //         })
-    // }, [])
+    useEffect(() => {
+        fetch(`http://localhost:5000/courses?email=${user?.email}`)
+            .then(res => res.json())
+            .then(result => {
+                setCourses(result);
+            })
+    }, [user])
     // console.log(user.email)
-    const [courses, refetch] = useCourese();
+    // const [courses, refetch] = useCourese();
     // console.log(courses);
 
     return (
-        <div className="overflow-x-auto">
+        <div className="w-full">
             <SectionTitle
                 subHeading='Instructor'
-                heading='Instructor want to manage course!!!'
+                heading='Want to manage course!!!'
             ></SectionTitle>
             <table className="table">
                 {/* head */}

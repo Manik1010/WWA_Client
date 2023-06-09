@@ -13,7 +13,8 @@ const useCourese = () => {
             return res.json();
         },
     })
-    console.log(courses)
+    // console.log(courses)
+    // console.log(courses?.email)
 
     return [courses, refetch]
 
