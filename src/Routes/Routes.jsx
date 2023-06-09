@@ -12,12 +12,19 @@ import SignUp from "../componements/Users/SignUp";
 import InstructorDeshboard from "../componements/Deshboard/InstructorDeshboard/InstructorDeshboard";
 import AddCourse from "../componements/Deshboard/InstructorDeshboard/AddCourse";
 import MyCourses from "../componements/Deshboard/InstructorDeshboard/MyCourses";
+import SelectedCourse from "../componements/Deshboard/UserDeshboard/SelectedCourse/SelectedCourse";
+import UserDashboard from "../componements/Deshboard/UserDeshboard/UserDashboard/UserDashboard";
+import EnrolledCourse from "../componements/Deshboard/UserDeshboard/EnrolledCourse/EnrolledCourse";
+import Payment from "../componements/Deshboard/UserDeshboard/Payment/Payment";
+import ErrorPage from "../componements/ErrorPage/ErrorPage ";
+import History from "../componements/Deshboard/UserDeshboard/Payment/History";
 
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children:[
             {
                 path: '/',
@@ -72,7 +79,31 @@ export const router = createBrowserRouter([
                 element: <MyCourses></MyCourses>
             }
             // For User............................ ...................................
-
+            ,
+            {
+                path: 'userDashboard',
+                element: <UserDashboard></UserDashboard>
+            }
+            ,
+            {
+                path: 'selectedCourse',
+                element: <SelectedCourse></SelectedCourse>
+            }
+            ,
+            {
+                path: 'enrolledCourse',
+                element: <EnrolledCourse></EnrolledCourse>
+            }
+            ,
+            {
+                path: 'payment',
+                element: <Payment></Payment>
+            }
+            ,
+            {
+                path: 'history',
+                element: <History></History>
+            }
         ]
     },
 ]);

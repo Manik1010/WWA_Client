@@ -1,12 +1,15 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { FaCartArrowDown } from "react-icons/fa";
+import useBooking from "../../../hooks/useBooking";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
-
+    // console.log(user);
+    const [bookings] = useBooking();
     const navigate = useNavigate()
+    console.log(bookings);
 
     const handleLogOut = () => {
         logOut()
@@ -19,6 +22,14 @@ const Navbar = () => {
         <li><Link to="/instructor">Instructor</Link></li>
         <li><Link to="/class">Class</Link></li>
         <li><Link to="/dashboard/adminDashboard">Dashboard</Link></li>
+        <li>
+            <Link to='/dashboard/selectedCourse'>
+                <button className="btn btn-xs gap-2">
+                    <FaCartArrowDown></FaCartArrowDown>
+                    <div className="badge badge-secondary">+{bookings?.length || 0}</div>
+                </button>
+            </Link>
+        </li>
 
     </>
     return (
@@ -42,12 +53,12 @@ const Navbar = () => {
                 </div>
                 <div className="navbar-end">
                     {/* <Link to="/login" className="btn">SingIn</Link> */}
-                    
+
                     {
                         user ? <>
                             <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
                         </> : <>
-                        <Link to="/login" className="btn btn-active btn-ghost">Sing In</Link>
+                            <Link to="/login" className="btn btn-active btn-ghost">Sing In</Link>
                         </>
                     }
                 </div>

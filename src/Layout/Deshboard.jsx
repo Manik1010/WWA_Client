@@ -3,23 +3,24 @@ import { FaWallet, FaHome, FaUsers, FaUtensils } from "react-icons/fa";
 import logo from '../../public/logo.jpeg'
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { FaCartArrowDown } from "react-icons/fa";
 
 
 const Deshboard = () => {
 
-    const {logOut } = useContext(AuthContext);
+    const { logOut } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const handleLogOut = () => {
         logOut()
-            .then(() => { 
+            .then(() => {
                 navigate('/login')
             })
             .catch(error => console.log(error));
     }
 
     // TODO... 
-    const userStatus = "Instructor";
+    const userStatus = "Instructordd";
 
 
     return (
@@ -64,8 +65,17 @@ const Deshboard = () => {
                             return (
                                 <>
                                     <li><NavLink to="/dashboard/userDashboard"><FaHome></FaHome> User Home</NavLink></li>
-                                    <li><NavLink to="/dashboard/selectedCourse"><FaUtensils></FaUtensils> Selected Course</NavLink></li>
+                                    <li><NavLink to="/dashboard/selectedCourse">
+                                        {/* <Link to='/dashboard/selectedCourse'> */}
+                                            <button className="btn btn-xs ml-[-10px]">
+                                                <FaCartArrowDown></FaCartArrowDown>
+                                                <div className="badge badge-secondary">+1</div>
+                                            </button>
+                                        {/* </Link> */}
+                                        Course</NavLink>
+                                    </li>
                                     <li><NavLink to="/dashboard/enrolledCourse"><FaHome></FaHome> Enrolled Course</NavLink></li>
+                                    <li><NavLink to="/dashboard/history"> Payment History</NavLink></li>
                                 </>
                             );
                         }
