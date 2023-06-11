@@ -2,21 +2,22 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import useTitle from "../../../hooks/useTitle";
-import img from '../../assets/home/01.jpeg'
-import { useContext } from "react";
+import img from '../../assets/loginBanner.jpg'
+import { useContext, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import SocialLogin from "../Share/SocialLogin/SocialLogin";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const SignUp = () => {
     useTitle("Registation")
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const {createUser, updateUserProfile} = useContext(AuthContext)
+    const { createUser, updateUserProfile } = useContext(AuthContext)
+    const [showPassword, setShowPassword] = useState(false);
+
 
     // const {createUser} = useContext(AuthProvider)
-    // const { createUser } = useContext(AuthContext);
-    // const { createUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const onSubmit = data => {
@@ -94,26 +95,51 @@ const SignUp = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input  type="password"  {...register("password", {
-                                    required: true,
-                                    
-                                    minLength: 6,
-                                    maxLength: 20,
-                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
-                                })} placeholder="password"  className="input input-bordered" />
-                                {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
-                                {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
-                                {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
-                                {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
-                                </label>
+                                <div className="password-input-wrapper">
+                                    <input
+                                        type={showPassword ? "text" : "password"}
+                                        {...register("password", {
+                                            required: true,
+                                            minLength: 6,
+                                            maxLength: 20,
+                                            pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                        })}
+                                        placeholder="password"
+                                        className="input input-bordered"
+                                    />
+                                    <span
+                                        className="password-toggle-icon"
+                                        onClick={() => setShowPassword(!showPassword)}
+                                        style={{
+                                            position: 'absolute',
+                                            top: '670px',
+                                            right: '0',
+                                            margin: '0.5rem',
+                                            cursor: 'pointer'
+                                          }}
+                                    >
+                                        <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                                    </span>
+
+
+                                    {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
+                                    {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
+                                    {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
+                                    {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
+
+                                </div>
+
+                                
+                                <div className="form-control mt-1" >
+                                    <input className="btn btn-active btn-ghost" type="submit" value="Sign Up" style={{weight: '50px'}} />
+                                </div>
                             </div>
-                            <div className="form-control mt-1">
-                                <input className="btn btn-active btn-ghost" type="submit" value="Sign Up" />
-                            </div>
+                            
                         </form>
-                        <p className="text-center mt-[-20px]"><small>Already have an account.. <Link className='text-orange-500 font-bold' to="/login">Sing In</Link></small></p>
+                        <p className="text-center mt-[-20px]">
+                            <small>Already have an account.. <Link className='text-orange-500 font-bold' to="/login"
+                        >Sing In</Link></small>
+                        </p>
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>

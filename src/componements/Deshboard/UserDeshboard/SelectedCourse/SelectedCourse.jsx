@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import useBooking from "../../../../../hooks/useBooking";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import useTitle from "../../../../../hooks/useTitle";
 
 
 const SelectedCourse = () => {
+    useTitle("BookingCourses")
     const [bookings, refetch] = useBooking();
     const handleDelete = item => {
         // console.log(item._id);
@@ -42,9 +44,9 @@ const SelectedCourse = () => {
             <div className="uppercase font-semibold h-[60px] flex justify-evenly items-center">
                 <h3 className="text-3xl">Total Items: {bookings.length}</h3>
                 {/* <h3 className="text-3xl">Total Price: ${total}</h3> */}
-                <Link to="/dashboard/payment">
+                {/* <Link to="/dashboard/payment">
                     <button className="btn btn-warning btn-sm">PAY</button>
-                </Link>
+                </Link> */}
             </div>
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
@@ -87,16 +89,12 @@ const SelectedCourse = () => {
                                 </td>
                                 <td className="text-end">${item.price}</td>
                                 <td>
-                                    {/* <Link to={{
-                                        pathname: "/dashboard/payment",
-                                        state: { item: item.price } // Pass the item as state
-                                        
-                                    }}>
+                                    <Link to={`/dashboard/payment/${item?._id}`}>
                                         <button className="btn btn-warning btn-sm mr-3">PAY</button>
-                                    </Link> */}
-                                    {
+                                    </Link>
+                                    {/* {
                                         console.log(item, item.price)
-                                    }
+                                    } */}
                                     <button onClick={() => handleDelete(item)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
                                 </td>
                             </tr>)

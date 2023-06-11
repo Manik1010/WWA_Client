@@ -50,7 +50,7 @@ const ManageItem = () => {
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount) {
-                    console.log(data)
+                    // console.log(data)
                     refetch();
                     Swal.fire({
                         position: 'top-start',
@@ -92,14 +92,10 @@ const ManageItem = () => {
                             <td>{course.available_set}</td>
                             <td>{course.status}</td>
                             <td>
-                                {/* {course.status !== "Approved" ? (
-                                    <button onClick={() => handleApprove(course)} className="btn btn-xs btn-success">
-                                        Approve
-                                    </button>
-                                ) : null} */}
-                                <button onClick={() => handleApprove(course)} className="btn btn-xs btn-success">approv</button>
-                                <button className="btn btn-xs btn-info ml-1">Feedback</button>
-                                <button onClick={() => handleDelete(course)} className="btn btn-xs btn-warning ml-12">Denie</button>
+
+                                <button onClick={() => handleApprove(course)} className="btn btn-xs btn-success" disabled={course.status === "Approved"}>approv</button>
+                                <button onClick={() => handleFeedback(course)} className="btn btn-xs btn-info ml-1">Feedback</button>
+                                <button onClick={() => handleDelete(course)} className="btn btn-xs btn-warning ml-12" disabled={course.status === "Approved"}>Denie</button>
 
                             </td>
 
@@ -116,3 +112,4 @@ const ManageItem = () => {
 };
 
 export default ManageItem;
+

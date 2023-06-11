@@ -19,6 +19,7 @@ import Payment from "../componements/Deshboard/UserDeshboard/Payment/Payment";
 import ErrorPage from "../componements/ErrorPage/ErrorPage ";
 import History from "../componements/Deshboard/UserDeshboard/Payment/History";
 import Edit from "../componements/Deshboard/InstructorDeshboard/Edit";
+import PrivateRoute from "../providers/PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -51,7 +52,7 @@ export const router = createBrowserRouter([
     },
     {
         path: 'dashboard',
-        element: <Deshboard></Deshboard>,
+        element: <PrivateRoute><Deshboard></Deshboard></PrivateRoute>,
         children: [
             // For Admin.................................................................... 
             {
@@ -102,7 +103,7 @@ export const router = createBrowserRouter([
             }
             ,
             {
-                path: 'payment',
+                path: 'payment/:id',
                 element: <Payment></Payment>
             }
             ,

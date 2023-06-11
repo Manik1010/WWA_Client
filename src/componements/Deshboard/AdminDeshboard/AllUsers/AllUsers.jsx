@@ -3,15 +3,34 @@ import { useQuery } from "@tanstack/react-query";
 import { FaEdit, FaTrashAlt, FaUserShield, FaUserSlash } from "react-icons/fa";
 import Swal from "sweetalert2";
 // import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import ReactModal from 'react-modal';
+import { useState } from "react";
+
 
 
 const AllUsers = () => {
     useTitle("AllUsers");
+    const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [updatedRole, setUpdatedRole] = useState("");
+
+    const handleEdit = (user) => {
+        // Additional logic if needed
+        setSelectedUser(user);
+        setUpdatedRole(user.role);
+        setIsModalOpen(true);
+    };
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+    };
+
     const { data: users = [], refetch } = useQuery(['users'], async () => {
         const res = await fetch("http://localhost:5000/users")
         // return res.data;
         return res.json();
     })
+
+
 
     const handleMakeAdmin = user => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
@@ -51,7 +70,33 @@ const AllUsers = () => {
                 }
             })
     }
+const handleSubmit = () => {
+    if (!selectedUser) return;
 
+    // Update the user role
+    fetch(`http://localhost:5000/users/${selectedUser._id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ role: updatedRole })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `${selectedUser.name} role updated successfully!`,
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
+      });
+
+    handleCloseModal();
+  };
 
     const handleDelete = user => {
         // console.log(user._id);
@@ -115,6 +160,7 @@ const AllUsers = () => {
                                 </td>
                                 <td>
                                     <button onClick={() => handleDelete(user)} className="btn btn-ghost bg-red-600  text-white"><FaTrashAlt></FaTrashAlt></button>
+                                    {/* <button onClick={() => handleEdit(user)} className="btn btn-ghost bg-red-400  text-white ml-2"><FaEdit></FaEdit></button> */}
                                     <button onClick={() => handleEdit(user)} className="btn btn-ghost bg-red-400  text-white ml-2"><FaEdit></FaEdit></button>
                                 </td>
                             </tr>)
@@ -124,6 +170,24 @@ const AllUsers = () => {
                     </tbody>
                 </table>
             </div>
+            {/* Modal */}
+            <ReactModal
+                isOpen={isModalOpen}
+                onRequestClose={handleCloseModal}
+            >
+                <h2 className="mx-auto text-center text-xl font-bold">Edit User</h2>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        Role:
+                        <select value={updatedRole} onChange={e => setUpdatedRole(e.target.value)}>
+                            <option value="Admin">Admin</option>
+                            <option value="Instructor">Instructor</option>
+                        </select>
+                    </label>
+                    <button type="submit" className="btn btn-active btn-accent">Save</button>
+                    <button type="button" onClick={handleCloseModal} className="btn btn-error ml-2">Cancel</button>
+                </form>
+            </ReactModal>
         </div>
     );
 };

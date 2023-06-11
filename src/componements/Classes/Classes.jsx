@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import Class from "./Class";
+import useTitle from "../../../hooks/useTitle";
 // import SectionTitle from "../SectionTitle/SectionTitle";
 
 const Classes = () => {
+    useTitle("Courses")
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {

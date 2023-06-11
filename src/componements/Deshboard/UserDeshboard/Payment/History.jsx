@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import { useContext } from "react";
+import useTitle from "../../../../../hooks/useTitle";
 
 const History = () => {
+    useTitle("PaymentHistory")
     // const [payments] = usePayment()
     const { user } = useContext(AuthContext)
     const [payments, setPayments] = useState([]);

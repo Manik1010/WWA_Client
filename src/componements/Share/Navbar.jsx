@@ -19,9 +19,9 @@ const Navbar = () => {
 
     const navOptions = <>
         <li><Link to="/">Home</Link></li>
+        <li><Link to="/class">Coures</Link></li>
         <li><Link to="/instructor">Instructor</Link></li>
-        <li><Link to="/class">Class</Link></li>
-        <li><Link to="/dashboard/adminDashboard">Dashboard</Link></li>
+        <li><Link to="/dashboard/">Dashboard</Link></li>
         <li>
             <Link to='/dashboard/selectedCourse'>
                 <button className="btn btn-xs gap-2">

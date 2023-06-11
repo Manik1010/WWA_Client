@@ -1,9 +1,11 @@
 // import { useParams } from "react-router-dom";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTitle from "../../../../hooks/useTitle";
 
 
 const Edit = () => {
+    useTitle("EditCoures");
     // const { id } = useParams();
     // console.log(id)
     const editCourse = useLoaderData();

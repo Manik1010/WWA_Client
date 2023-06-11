@@ -1,9 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../../providers/AuthProvider";
 import Tabel from "./Tabel";
+import useTitle from "../../../../../hooks/useTitle";
 
 const EnrolledCourse = () => {
-
+    useTitle("EnrollCourse")
     const { user } = useContext(AuthContext)
     const [payments, setPayments] = useState([]);
 

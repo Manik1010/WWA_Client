@@ -1,8 +1,10 @@
+import useTitle from "../../../../hooks/useTitle";
 
 const InstructorDeshboard = () => {
+    useTitle("Deshboard")
     return (
         <div>
-            Instructor Deshboard....
+            Instructor Deshboard Loading....
         </div>
     );
 };
