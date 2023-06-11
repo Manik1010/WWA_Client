@@ -19,7 +19,7 @@ const Payment = () => {
 
     return (
         <div>
-            <h2 className="text-3xl"> Teka o teka tumi uira uira aso...{price}</h2>
+            <h2 className="text-3xl"> Teka Pay...{price}</h2>
             <Elements stripe={stripePromise}>
                 <CheckoutForm bookings={bookings} price={price}></CheckoutForm>
             </Elements>

@@ -1,29 +1,16 @@
-import { useContext, useEffect, useState } from "react";
+// import { useContext, useEffect, useState } from "react";
 import useTitle from "../../../../hooks/useTitle";
 import SectionTitle from "../../SectionTitle/SectionTitle";
-import { AuthContext } from "../../../providers/AuthProvider";
-// import useCourese from "../../../../hooks/useCourese";
+// import { AuthContext } from "../../../providers/AuthProvider";
+import useCourese from "../../../../hooks/useCourese";
+import { Link } from "react-router-dom";
 
 const MyCourses = () => {
     useTitle("MyCoures");
-    // const { data: courses = [], refetch } = useQuery(['courses'], async () => {
-    //     const res = await fetch("http://localhost:5000/courses")
-    //     // return res.data;
-    //     return res.json();
-    // })
-    const {user } = useContext(AuthContext);
-    const [courses, setCourses] = useState([]);
 
-    useEffect(() => {
-        fetch(`http://localhost:5000/courses?email=${user?.email}`)
-            .then(res => res.json())
-            .then(result => {
-                setCourses(result);
-            })
-    }, [user])
-    // console.log(user.email)
-    // const [courses, refetch] = useCourese();
+    const [courses] = useCourese();
     // console.log(courses);
+    
 
     return (
         <div className="w-full">
@@ -37,16 +24,17 @@ const MyCourses = () => {
                     <tr className="text-center">
                         <th>#</th>
                         <th>Course</th>
-                        <th>Instructor Name</th>
+                        <th>Course Fee</th>
                         <th>Total Sets</th>
                         <th>Available Sets</th>
                         <th>Status</th>
                         <th>Feedback</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    {/* {
+                    {
                         courses.map((course, index) => <tr key={course._id}>
                             <th>{index + 1}</th>
                             <td>
@@ -61,13 +49,19 @@ const MyCourses = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td>{course.instructor}</td>
+                            <td>{course.price}</td>
                             <td>{course.set}</td>
                             <td>{course.available_set}</td>
                             <td>{course?.status}</td>
+                            <td></td>
+                            <td>
+                                <Link to={`/dashboard/edit/${course?._id}`}>
+                                    <button className="btn btn-ghost btn-xs">Edite</button>
+                                </Link>
+                            </td>
 
                         </tr>)
-                    } */}
+                    }
 
                 </tbody>
                 {/* foot */}

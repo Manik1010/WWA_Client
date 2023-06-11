@@ -4,11 +4,12 @@ import logo from '../../public/logo.jpeg'
 import { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
 import { FaCartArrowDown } from "react-icons/fa";
+import useAdmin from "../../hooks/useAdmin";
 
 
 const Deshboard = () => {
 
-    const { user, logOut } = useContext(AuthContext);
+    const { logOut } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const handleLogOut = () => {
@@ -18,10 +19,21 @@ const Deshboard = () => {
             })
             .catch(error => console.log(error));
     }
+    
+    const [isAdmin] = useAdmin();
+    // console.log(isAdmin);
+    // console.log(isAdmin.role);
+    // console.log(isAdmin[3].role);
 
-    // TODO... 
-    console.log(user);
-    const userStatus = "Admin";
+
+    const userStatus = "Instructor";
+    // if (user && user.isAdmin) {
+    //     userStatus = "Admin";
+    // } else if (user && user.isInstructor) {
+    //     userStatus = "Instructor";
+    // } else {
+    //     userStatus = "User";
+    // }
 
 
     return (

@@ -18,6 +18,7 @@ import EnrolledCourse from "../componements/Deshboard/UserDeshboard/EnrolledCour
 import Payment from "../componements/Deshboard/UserDeshboard/Payment/Payment";
 import ErrorPage from "../componements/ErrorPage/ErrorPage ";
 import History from "../componements/Deshboard/UserDeshboard/Payment/History";
+import Edit from "../componements/Deshboard/InstructorDeshboard/Edit";
 
 
 export const router = createBrowserRouter([
@@ -77,7 +78,12 @@ export const router = createBrowserRouter([
             {
                 path: 'myCourses',
                 element: <MyCourses></MyCourses>
-            }
+            },
+            {
+                path: 'edit/:id',
+                element: <Edit></Edit>,
+                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+              }
             // For User............................ ...................................
             ,
             {

@@ -9,6 +9,8 @@ import img5 from '../../assets/home/0=22.jpeg';
 import img6 from '../../assets/home/03.jpeg';
 
 const Banner = () => {
+
+
     return (
         <div>
             <Carousel>
@@ -39,6 +41,7 @@ const Banner = () => {
                 </div>
             </Carousel>
         </div>
+
     );
 };
 

@@ -5,7 +5,8 @@ import useAxiosSecure from './useAxiosSecure';
 
 const useCourese = () => {
     const { user, loading } = useContext(AuthContext)
-    const token = localStorage.getItem('access-token')
+    // console.log(user)
+    // const token = localStorage.getItem('access-token')
     const [axiosSecure] = useAxiosSecure()
 
     const { refetch, data: courses = [] } = useQuery({
@@ -21,11 +22,10 @@ const useCourese = () => {
             // return res.json();
 
             const res = await axiosSecure(`/courses?email=${user?.email}`)
-            console.log('res from axios', res)
             return res.data;
         },
     })
-    // console.log(courses)
+    
     // console.log(courses?.email)
 
     return [courses, refetch]

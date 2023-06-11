@@ -15,7 +15,7 @@ const Instructor = ({ instructor }) => {
                 <h2 className="card-title">{name}</h2>
                 <p>Email: {email}</p>
                 <p>Number Of Students: {studentNumber}</p>
-                <p>Couse Fee: ${address}</p>
+                <p>Address: {address}</p>
             </div>
         </div>
     );
