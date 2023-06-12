@@ -13,7 +13,7 @@ const Instructors = () => {
                 setInstructors(result);
             })
     }, [])
-    console.log(instructors)
+    // console.log(instructors)
     return (
         <div>
             <SectionTitle

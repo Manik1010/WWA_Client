@@ -83,7 +83,7 @@ export const router = createBrowserRouter([
             {
                 path: 'edit/:id',
                 element: <Edit></Edit>,
-                loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({params}) => fetch(`http://localhost:5000/course/${params.id}`)
               }
             // For User............................ ...................................
             ,

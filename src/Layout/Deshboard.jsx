@@ -6,6 +6,7 @@ import { AuthContext } from "../providers/AuthProvider";
 import { FaCartArrowDown } from "react-icons/fa";
 import useAdmin from "../../hooks/useAdmin";
 import useTitle from "../../hooks/useTitle";
+import useInstructor from "../../hooks/useInstructor";
 
 
 const Deshboard = () => {
@@ -22,20 +23,20 @@ const Deshboard = () => {
             .catch(error => console.log(error));
     }
     
-    // const [isAdmin] = useAdmin();
+    const [isAdmin] = useAdmin();
     // console.log(isAdmin);
-    // console.log(isAdmin.role);
-    // console.log(isAdmin[0]);
+    const [isInstructor] = useInstructor();
+    // console.log(isInstructor);
 
+    let userStatus;
 
-    const userStatus = "Admin";
-    // if (user && user.isAdmin) {
-    //     userStatus = "Admin";
-    // } else if (user && user.isInstructor) {
-    //     userStatus = "Instructor";
-    // } else {
-    //     userStatus = "User";
-    // }
+    if (isAdmin) {
+        userStatus = "Admin";
+    } else if (isInstructor) {
+        userStatus = "Instructor";
+    } else {
+        userStatus = "User";
+    }
 
 
     return (
@@ -108,3 +109,5 @@ const Deshboard = () => {
 };
 
 export default Deshboard;
+
+
