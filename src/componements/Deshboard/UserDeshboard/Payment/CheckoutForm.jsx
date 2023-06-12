@@ -7,7 +7,7 @@ import './CheckoutForm.css'
 // import { AuthContext } from "../../../../providers/AuthProvider";
 
 const CheckoutForm = ({id}) => {
-    console.log(id);
+    // console.log(id);
     const [payments, setPayments] = useState([]);
     useEffect(() => {
         fetch(`http://localhost:5000/bookings?id=${id}`)

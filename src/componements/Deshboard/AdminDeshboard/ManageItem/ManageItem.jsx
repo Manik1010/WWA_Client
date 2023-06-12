@@ -7,7 +7,7 @@ const ManageItem = () => {
 
     useTitle("ManageCourse");
     const { data: courses = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch("http://localhost:5000/courses")
+        const res = await fetch("http://localhost:5000/courses/admin")
         // return res.data;
         return res.json();
     })

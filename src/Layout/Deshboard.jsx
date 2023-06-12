@@ -7,10 +7,12 @@ import { FaCartArrowDown } from "react-icons/fa";
 import useAdmin from "../../hooks/useAdmin";
 import useTitle from "../../hooks/useTitle";
 import useInstructor from "../../hooks/useInstructor";
+import useBooking from "../../hooks/useBooking";
 
 
 const Deshboard = () => {
     useTitle("Deshboed")
+    const [bookings] = useBooking();
 
     const { logOut } = useContext(AuthContext);
     const navigate = useNavigate()
@@ -85,12 +87,12 @@ const Deshboard = () => {
                                         {/* <Link to='/dashboard/selectedCourse'> */}
                                             <button className="btn btn-xs ml-[-10px]">
                                                 <FaCartArrowDown></FaCartArrowDown>
-                                                <div className="badge badge-secondary">+1</div>
+                                                <div className="badge badge-secondary">+{bookings?.length || 0}</div>
                                             </button>
                                         {/* </Link> */}
                                         Course</NavLink>
                                     </li>
-                                    <li><NavLink to="/dashboard/enrolledCourse"><FaHome></FaHome> Enrolled Course</NavLink></li>
+                                    <li><NavLink to="/dashboard/enrolledCourse"> Enrolled Course</NavLink></li>
                                     <li><NavLink to="/dashboard/history"> Payment History</NavLink></li>
                                 </>
                             );

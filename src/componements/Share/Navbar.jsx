@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaCartArrowDown } from "react-icons/fa";
 import useBooking from "../../../hooks/useBooking";
+// import useAdmin from "../../../hooks/useAdmin";
+// import useInstructor from "../../../hooks/useInstructor";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -10,6 +12,9 @@ const Navbar = () => {
     const [bookings] = useBooking();
     const navigate = useNavigate()
     // console.log(bookings);
+        
+    // const [isAdmin] = useAdmin();
+    // const [isInstructor] = useInstructor();
 
     const handleLogOut = () => {
         logOut()
