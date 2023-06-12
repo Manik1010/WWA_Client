@@ -24,7 +24,7 @@ const Payment = () => {
     const [payments, setPayments] = useState([]);
 
     useEffect(() => {
-      fetch(`http://localhost:5000/bookings?id=${id}`)
+      fetch(`https://wwa-server-manik1010.vercel.app/bookings?id=${id}`)
         .then(res => res.json())
         .then(result => {
           setPayments(result);

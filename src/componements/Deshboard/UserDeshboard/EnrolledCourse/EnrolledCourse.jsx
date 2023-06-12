@@ -9,7 +9,7 @@ const EnrolledCourse = () => {
     const [payments, setPayments] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/payments?email=${user?.email}`)
+        fetch(`https://wwa-server-manik1010.vercel.app/payments?email=${user?.email}`)
             .then(res => res.json())
             .then(result => {
                 setPayments(result);

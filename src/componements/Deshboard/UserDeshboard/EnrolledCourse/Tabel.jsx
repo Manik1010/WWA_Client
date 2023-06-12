@@ -5,7 +5,7 @@ const Tabel = ({bookingItem}) => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/courses?id=${bookingItem}`)
+        fetch(`https://wwa-server-manik1010.vercel.app/courses?id=${bookingItem}`)
             .then(res => res.json())
             .then(result => {
                 setData(result);
