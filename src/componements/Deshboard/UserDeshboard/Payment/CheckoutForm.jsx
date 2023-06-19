@@ -3,10 +3,12 @@ import { useContext, useEffect, useState } from "react";
 import './CheckoutForm.css'
 import { AuthContext } from "../../../../providers/AuthProvider";
 import useAxiosSecure from "../../../../../hooks/useAxiosSecure";
+import useBooking from "../../../../../hooks/useBooking";
 
 const CheckoutForm = ({id}) => {
     // console.log(id);
     const [payments, setPayments] = useState({});
+    const [refetch] = useBooking();
     useEffect(() => {
         // fetch(`http://localhost:5000/bookings?id=${id}`)
         fetch(`http://localhost:5000/bookings?id=${id}`)
@@ -16,7 +18,7 @@ const CheckoutForm = ({id}) => {
                 // console.log(result)
             })
     }, [id])
-    console.log(payments)
+    // console.log(payments)
     const { price } = payments;
 
     const stripe = useStripe();
@@ -105,6 +107,8 @@ const CheckoutForm = ({id}) => {
                     // console.log(res.data);
                     if (res.data.result.insertedId) {
                         // display confirm
+                        
+                        // refetch()
                     }
                 })
         }

@@ -17,7 +17,11 @@ const Instructors = () => {
         <div>
         <div>
             <h1 className="text-3xl text-center font-bold p-24">All Instructo Are Here...</h1>
-            <div className="mt-[-100px]">
+            <div className="mt-[-100px]"
+                        // data-aos="fade-down"
+                        // data-aos-easing="linear"
+                        // data-aos-duration="1500"
+            >
                 {
                     instructors?.map(instructor => (
                         <Instructor

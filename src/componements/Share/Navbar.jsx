@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import { FaCartArrowDown } from "react-icons/fa";
+// import { FaCartArrowDown } from "react-icons/fa";
 import useBooking from "../../../hooks/useBooking";
 // import useAdmin from "../../../hooks/useAdmin";
 // import useInstructor from "../../../hooks/useInstructor";
@@ -27,14 +27,14 @@ const Navbar = () => {
         <li><Link to="/class">Coures</Link></li>
         <li><Link to="/instructor">Instructor</Link></li>
         <li><Link to="/dashboard/">Dashboard</Link></li>
-        <li>
+        {/* <li>
             <Link to='/dashboard/selectedCourse'>
                 <button className="btn btn-xs gap-2">
                     <FaCartArrowDown></FaCartArrowDown>
                     <div className="badge badge-secondary">+{bookings?.length || 0}</div>
                 </button>
             </Link>
-        </li>
+        </li> */}
 
     </>
     return (

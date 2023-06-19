@@ -52,15 +52,15 @@ const Class = ({ course }) => {
     const cardClass = `card card-side bg-base-100 shadow-xl m-4 p-8 ${available_set === 0 ? 'bg-red-500' : ''}`;
 
     return (
-        <div className={cardClass}>
+        <div className={cardClass} data-aos="zoom-out-up">
             <img className="p-8 w-[900px]" src={image} alt="Shoes" />
             <div className="card-body p-4">
                 <h3 className="md:text-right font-semibold">Available seats: {available_set}</h3>
                 <h2 className="card-title font-bold">Course Name: {name}</h2>
-                <h4>Instructor Name: {instructor}</h4>
-                <p>Course Fee: ${price}</p>
-                <p>Total Set: {set}</p>
-                <p>Description: {disp}</p>
+                <h4> <span className="font-semibold">Instructor Name:</span> {instructor}</h4>
+                <p> <span className="font-semibold">Course Fee: </span>  ${price}</p>
+                <p> <span className="font-semibold">Total Set:</span>  {set}</p>
+                <p> <span className="font-semibold">Description:</span>  {disp}</p>
 
                 <div className="card-actions justify-end">
                     <button onClick={() => handelAddBooking(course)} className="btn btn-active btn-ghost" disabled={available_set === 0}>Booking</button>

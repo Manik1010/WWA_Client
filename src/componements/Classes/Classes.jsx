@@ -18,7 +18,13 @@ const Classes = () => {
     return (
         <div>
             <div>
-                <h1 className="text-3xl text-center font-bold p-24">All Course Are Here...</h1>
+                {/* <div className="mt-10">
+                    <SectionTitle
+                    subHeading='All Course Are Here'
+                    heading='You Can Book Course!!!'
+                    ></SectionTitle>
+                </div> */}
+                <h1 className="text-3xl text-center font-bold p-24">All Course Are Here... You Can Book Course!!!</h1>
                 <div className="mt-[-100px]">
                     {
                         courses?.map(course => (
