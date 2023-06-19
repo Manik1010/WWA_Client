@@ -10,7 +10,7 @@ const usePayment = () => {
         queryKey: ['payments', user?.email],
         enabled: !loading,
         queryFn: async () => {
-            const res = await fetch(`https://wwa-server-manik1010.vercel.app/payments?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/payments?email=${user?.email}`)
             return res.json();
         },
     })

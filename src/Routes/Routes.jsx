@@ -20,6 +20,7 @@ import ErrorPage from "../componements/ErrorPage/ErrorPage ";
 import History from "../componements/Deshboard/UserDeshboard/Payment/History";
 import Edit from "../componements/Deshboard/InstructorDeshboard/Edit";
 import PrivateRoute from "../providers/PrivateRoute";
+import Profile from "../componements/Deshboard/Profile/Profile";
 
 
 export const router = createBrowserRouter([
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><Deshboard></Deshboard></PrivateRoute>,
         children: [
+            {
+                path: 'profile',
+                element: <Profile></Profile>
+            },
             // For Admin.................................................................... 
             {
                 path: 'adminDashboard',

@@ -25,7 +25,7 @@ const AllUsers = () => {
     };
 
     const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch("https://wwa-server-manik1010.vercel.app/users")
+        const res = await fetch("http://localhost:5000/users")
         // return res.data;
         return res.json();
     })

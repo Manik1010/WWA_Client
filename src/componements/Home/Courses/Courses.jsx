@@ -7,7 +7,7 @@ const Courses = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        fetch("https://wwa-server-manik1010.vercel.app/courses/card")
+        fetch("http://localhost:5000/courses/card")
             .then(res => res.json())
             .then(result => {
                 // console.log(result);

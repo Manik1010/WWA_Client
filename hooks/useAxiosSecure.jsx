@@ -5,7 +5,7 @@ import { AuthContext } from '../src/providers/AuthProvider';
 
 const axiosSecure = axios.create({
   // baseURL: 'http://localhost:5000/', 
-  baseURL: 'https://wwa-server-manik1010.vercel.app/', 
+  baseURL: 'http://localhost:5000/', 
 
 });
 

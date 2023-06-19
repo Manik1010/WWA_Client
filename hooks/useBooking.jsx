@@ -13,7 +13,7 @@ const useBooking = () => {
         queryFn: async () => {
             // const res = await axiosSecure(`/bookings?email=${user?.email}`)
             // const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`)
-            const res = await fetch(`https://wwa-server-manik1010.vercel.app/bookings?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/bookings?email=${user?.email}`)
             return res.json();
         },
     })

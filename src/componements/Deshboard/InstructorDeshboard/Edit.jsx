@@ -28,7 +28,7 @@ const Edit = () => {
         const updateCourse = { name, instructor, email, set, price, disp }
         // console.log(updateCourse);
 
-        fetch(`https://wwa-server-manik1010.vercel.app/updateCourse/${_id}`, {
+        fetch(`http://localhost:5000/updateCourse/${_id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",

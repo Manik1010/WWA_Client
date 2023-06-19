@@ -12,7 +12,7 @@ const History = () => {
     const [payments, setPayments] = useState([]);
 
     useEffect(() => {
-        fetch(`https://wwa-server-manik1010.vercel.app/payments?email=${user?.email}`)
+        fetch(`http://localhost:5000/payments?email=${user?.email}`)
             .then(res => res.json())
             .then(result => {
                 setPayments(result);
@@ -33,7 +33,6 @@ const History = () => {
                         <tr>
                             <th>#</th>
                             <th>Email</th>
-                            <th>Quantity</th>
                             <th>price</th>
                             <th className="text-center">Date</th>
                             <th>Statues</th>
@@ -52,16 +51,13 @@ const History = () => {
                                 <td>
                                     {item.email}
                                 </td>
-                                <td>
-                                    {item.quantity}
-                                </td>
                                 <td className="text-end">${item.price}</td>
                                 <td>
                 
                                     {item.date}
                                 </td>
                                 <td>
-                                    {item.status}
+                                    {item.ookingStatus}
                                 </td>
                                 <td>
                                     {item.transactionId}

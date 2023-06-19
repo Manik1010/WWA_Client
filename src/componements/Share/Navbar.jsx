@@ -57,6 +57,14 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
+
+                {user &&
+                    <>
+                        {/* <img className='rounded-circle w-10' title={user.displayName} style={{ height: '40px' }} src={user.photoURL} alt="" /> */}
+                        {/* <img className='rounded-circle w-10' src={user.photoURL} title={user.displayName} style={{ height: '40px' }} ></img> */}
+                        <Link to="dashboard/profile"><img className='rounded-circle w-10' title={user.displayName} style={{ height: '40px' }} src={user.photoURL} alt="" /></Link>
+                    </>
+                }
                     {/* <Link to="/login" className="btn">SingIn</Link> */}
 
                     {
