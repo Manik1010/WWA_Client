@@ -14,7 +14,7 @@ const Class = ({ course }) => {
         if (user && user.email) {
             const bookingCourse = { courseId: _id, name, image, price, set, available_set, instructor, bookerEmail: user.email };
             // {available_set-1}
-            fetch('http://localhost:5000/bookings', {
+            fetch('https://wwa-server.vercel.app/bookings', {
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

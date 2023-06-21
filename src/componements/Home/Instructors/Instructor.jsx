@@ -9,13 +9,13 @@ const Instructor = ({ instructor }) => {
             data-aos-easing="linear"
             data-aos-duration="1500">
             <figure className="px-10 pt-10">
-                <img src={image} alt="Shoes" className="rounded-xl" />
+                <img src={image} alt="Shoes" className="rounded-full"/>
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{name}</h2>
-                <p>Email: {email}</p>
-                <p>Number Of Students: {studentNumber}</p>
-                <p>Address: {address}</p>
+                <p><span className="font-semibold"> Email: </span> {email}</p>
+                <p><span className="font-semibold">Number Of Students: </span>  {studentNumber}</p>
+                <p> <span className="font-semibold">Address: </span>  {address}</p>
             </div>
         </div>
     );

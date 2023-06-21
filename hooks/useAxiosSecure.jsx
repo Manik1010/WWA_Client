@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../src/providers/AuthProvider';
 
 const axiosSecure = axios.create({
-  // baseURL: 'http://localhost:5000/', 
-  baseURL: 'http://localhost:5000/', 
+  // baseURL: 'https://wwa-server.vercel.app/', 
+  baseURL: 'https://wwa-server.vercel.app/', 
 
 });
 
@@ -16,7 +16,7 @@ const useAxiosSecure = () => {
   const navigate = useNavigate(); 
 
   // const axiosSecure = axios.create({
-  //   baseURL: 'http://localhost:5000/', 
+  //   baseURL: 'https://wwa-server.vercel.app/', 
   // });
 
   useEffect(() => {
