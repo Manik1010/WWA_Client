@@ -1,13 +1,13 @@
 import { useQuery } from '@tanstack/react-query'
 import { useContext } from 'react';
 import { AuthContext } from '../src/providers/AuthProvider';
-import useAxiosSecure from './useAxiosSecure';
+// import useAxiosSecure from './useAxiosSecure';
 
 const useCourese = () => {
     const { user, loading } = useContext(AuthContext)
     // console.log(user)
     // const token = localStorage.getItem('access-token')
-    const [axiosSecure] = useAxiosSecure()
+    // const [axiosSecure] = useAxiosSecure()
 
     const { refetch, data: courses = [] } = useQuery({
         queryKey: ['courses', user?.email],
@@ -21,8 +21,10 @@ const useCourese = () => {
             // }})
             // return res.json();
 
-            const res = await axiosSecure(`/courses?email=${user?.email}`)
-            return res.data;
+            // const res = await axiosSecure(`/courses?email=${user?.email}`)
+            // return res.data;
+            const res = await fetch(`https://wwa-server.vercel.app/courses?email=${user?.email}`)
+            return res.json();
         },
     })
     

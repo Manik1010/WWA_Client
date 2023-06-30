@@ -11,7 +11,7 @@ const CheckoutForm = ({id}) => {
     const [refetch] = useBooking();
     useEffect(() => {
         // fetch(`http://localhost:5000/bookings?id=${id}`)
-        fetch(`http://localhost:5000/bookings?id=${id}`)
+        fetch(`https://wwa-server.vercel.app/bookings?id=${id}`)
             .then(res => res.json())
             .then(result => {
                 setPayments(result);

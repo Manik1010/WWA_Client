@@ -49,7 +49,7 @@ const MyCourses = () => {
                                     </div>
                                 </div>
                             </td>
-                            <td>{course.email}</td>
+                            <td>$ {course.price}</td>
                             <td>{course.set}</td>
                             <td>{course.available_set}</td>
                             <td>{course?.status}</td>

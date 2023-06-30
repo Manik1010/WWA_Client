@@ -7,7 +7,7 @@ const ManageItem = () => {
 
     useTitle("ManageCourse");
     const { data: courses = [], refetch } = useQuery(['users'], async () => {
-        const res = await fetch("http://localhost:5000/courses/admin")
+        const res = await fetch("https://wwa-server.vercel.app/courses/admin")
         // return res.data;
         return res.json();
     })
@@ -23,7 +23,7 @@ const ManageItem = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/courses/${course._id}`, {
+                fetch(`https://wwa-server.vercel.app/courses/${course._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -43,7 +43,7 @@ const ManageItem = () => {
     }
     const handleApprove = course => {
         // console.log(course.status)
-        fetch(`http://localhost:5000/courses/admin/${course._id}`, {
+        fetch(`https://wwa-server.vercel.app/courses/admin/${course._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

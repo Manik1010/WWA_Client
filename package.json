@@ -33,6 +33,7 @@
     "react-router-dom": "^6.11.2",
     "react-simple-captcha": "^9.0.2",
     "react-slick": "^0.29.0",
+    "recharts": "^2.7.2",
     "slick-carousel": "^1.8.1",
     "sort-by": "^1.2.0",
     "sweetalert2": "^11.7.10",
